@@ -1,0 +1,39 @@
+<div class="step" [formGroup]="group">
+  <h3>Step 4 – Review & Approval</h3>
+
+  <div class="row">
+    <label>Reviewer (Autocomplete) *</label>
+    <input type="text" formControlName="reviewer" list="reviewerList" />
+    <datalist id="reviewerList">
+      <option *ngFor="let x of reviewers" [value]="x"></option>
+    </datalist>
+    <div class="err" *ngIf="isInvalid('reviewer')">Must match predefined list.</div>
+  </div>
+
+  <div class="two">
+    <div class="row">
+      <label>Review Date *</label>
+      <input type="date" formControlName="reviewDate" />
+      <div class="err" *ngIf="isInvalid('reviewDate')">Review Date is required.</div>
+    </div>
+
+    <div class="row">
+      <label>Approval Status *</label>
+      <div class="radio">
+        <label><input type="radio" formControlName="approvalStatus" value="Approve" /> Approve</label>
+        <label><input type="radio" formControlName="approvalStatus" value="Reject" /> Reject</label>
+      </div>
+      <div class="err" *ngIf="isInvalid('approvalStatus')">Approval Status is required.</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>Comments <span *ngIf="isRejected">(Required if Rejected)</span></label>
+    <textarea rows="3" formControlName="comments"></textarea>
+    <div class="err" *ngIf="isInvalid('comments')">Comments are required when status is Rejected.</div>
+  </div>
+
+  <div class="err" *ngIf="showErrors && formLevelErrors?.['reviewBeforeTarget']">
+    Review Date must be on/after Target Completion Date.
+  </div>
+</div>

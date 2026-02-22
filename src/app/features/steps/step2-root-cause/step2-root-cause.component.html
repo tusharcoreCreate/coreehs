@@ -1,0 +1,45 @@
+<div class="step" [formGroup]="group">
+  <h3>Step 2 – Root Cause Analysis</h3>
+
+  <div class="two">
+    <div class="row">
+      <label>Why 1 *</label>
+      <input type="text" formControlName="why1" />
+      <div class="err" *ngIf="isInvalid('why1')">Why 1 is required.</div>
+    </div>
+
+    <div class="row">
+      <label>Why 2 *</label>
+      <input type="text" formControlName="why2" />
+      <div class="err" *ngIf="isInvalid('why2')">Why 2 is required.</div>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="row">
+      <label>Why 3 *</label>
+      <input type="text" formControlName="why3" />
+      <div class="err" *ngIf="isInvalid('why3')">Why 3 is required.</div>
+    </div>
+
+    <div class="row">
+      <label>Investigation Date *</label>
+      <input type="date" formControlName="investigationDate" />
+      <div class="err" *ngIf="isInvalid('investigationDate')">Investigation Date is required.</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>Investigator (Autocomplete) *</label>
+    <input type="text" formControlName="investigator" list="investigatorList" />
+    <datalist id="investigatorList">
+      <option *ngFor="let x of investigators" [value]="x"></option>
+    </datalist>
+    <div class="err" *ngIf="isInvalid('investigator')">Must match predefined list.</div>
+  </div>
+
+  <div class="err" *ngIf="hasDuplicateWhy">Why fields must not contain duplicate values.</div>
+  <div class="err" *ngIf="showErrors && formLevelErrors?.['investigationBeforeReported']">
+    Investigation Date must be on/after Reported Date.
+  </div>
+</div>

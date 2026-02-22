@@ -1,0 +1,27 @@
+.wizard { display: flex; flex-direction: column; gap: 12px; }
+.topbar { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+.title { margin: 0; font-size: 18px; }
+.subtitle { color: #666; margin-top: 4px; font-size: 13px; }
+
+.steps { display: flex; gap: 8px; }
+.steps button {
+  width: 34px; height: 34px; border-radius: 999px; border: 1px solid #ddd; background: #fff;
+  cursor: pointer;
+}
+.steps button.active { border-color: #333; font-weight: 700; }
+
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn { padding: 8px 12px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+.btn.primary { background: #111; color: #fff; }
+.btn.secondary { background: #f4f4f4; border-color: #e2e2e2; }
+.btn.outline { background: #fff; border-color: #ddd; }
+.btn.danger { background: #fff; border-color: #ffbcbc; color: #9d0000; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.msg { padding: 10px 12px; border-radius: 10px; background: #f4f8ff; border: 1px solid #dbe7ff; }
+.msg.error { background: #fff4f4; border-color: #ffd2d2; color: #9d0000; }
+
+.footer { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.form-errors { padding: 10px 12px; border-radius: 10px; border: 1px dashed #ffbcbc; background: #fffafa; }
+.error { color: #9d0000; font-size: 13px; margin-top: 6px; }

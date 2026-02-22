@@ -1,0 +1,85 @@
+<div class="wizard">
+  <div class="topbar">
+    <div>
+      <h2 class="title">Form Wizard</h2>
+      <div class="subtitle">Current: <b>{{ currentStepName() }}</b></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn secondary" (click)="saveDraft()">Save Draft</button>
+      <!-- <button type="button" class="btn secondary" (click)="loadDraft()">Load Draft</button> -->
+      <!-- <button type="button" class="btn danger" (click)="clearDraft()">Clear Draft</button> -->
+    </div>
+  </div>
+
+  <div class="msg" *ngIf="draftMessage()">{{ draftMessage() }}</div>
+  <div class="msg error" *ngIf="submitMessage()">{{ submitMessage() }}</div>
+
+  <nav class="steps">
+    <button type="button" [class.active]="stepIndex() === 0" (click)="goTo(0)">1</button>
+    <button type="button" [class.active]="stepIndex() === 1" (click)="goTo(1)">2</button>
+    <button type="button" [class.active]="stepIndex() === 2" (click)="goTo(2)">3</button>
+    <button type="button" [class.active]="stepIndex() === 3" (click)="goTo(3)">4</button>
+  </nav>
+
+  <form class="form" [formGroup]="form" novalidate>
+    <app-step1-problem
+      *ngIf="stepIndex() === 0"
+      [group]="problemGroup"
+      [categories]="categories"
+      [locations]="locations"
+      [showErrors]="submitAttempted()"
+    ></app-step1-problem>
+
+    <app-step2-root-cause
+      *ngIf="stepIndex() === 1"
+      [group]="rootCauseGroup"
+      [investigators]="investigators"
+      [showErrors]="submitAttempted()"
+      [formLevelErrors]="form.errors"
+    ></app-step2-root-cause>
+
+    <app-step3-corrective
+      *ngIf="stepIndex() === 2"
+      [group]="correctiveGroup"
+      [responsiblePeople]="responsiblePeople"
+      [showErrors]="submitAttempted()"
+      [formLevelErrors]="form.errors"
+    ></app-step3-corrective>
+
+    <app-step4-review
+      *ngIf="stepIndex() === 3"
+      [group]="reviewGroup"
+      [reviewers]="reviewers"
+      [showErrors]="submitAttempted()"
+      [formLevelErrors]="form.errors"
+    ></app-step4-review>
+  </form>
+
+  <div class="footer">
+    <button type="button" class="btn secondary" (click)="prev()" [disabled]="stepIndex() === 0">Prev</button>
+    <button type="button" class="btn secondary" (click)="next()" [disabled]="stepIndex() === 3">Next</button>
+
+    <button
+      type="button"
+      class="btn primary"
+      (click)="submitFinal()"
+      [disabled]="stepIndex() !== 3"
+      title="Final submit is available on last step"
+    >
+      Final Submit
+    </button>
+  </div>
+
+  <div class="form-errors" *ngIf="submitAttempted() && form.errors as errs">
+    <div class="error" *ngIf="errs['investigationBeforeReported']">
+      Investigation Date must be on/after Reported Date.
+    </div>
+    <div class="error" *ngIf="errs['targetNotAfterInvestigation']">
+      Target Completion Date must be after Investigation Date.
+    </div>
+    <div class="error" *ngIf="errs['reviewBeforeTarget']">
+      Review Date must be on/after Target Completion Date.
+    </div>
+  </div>
+</div>

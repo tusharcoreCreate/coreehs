@@ -1,0 +1,7 @@
+.step h3 { margin: 0 0 12px; }
+.row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.two { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+label { font-weight: 700; font-size: 13px; }
+input { padding: 10px 12px; border-radius: 10px; border: 1px solid #ddd; outline: none; }
+.err { color: #9d0000; font-size: 12px; }
+@media (max-width: 720px) { .two { grid-template-columns: 1fr; } }

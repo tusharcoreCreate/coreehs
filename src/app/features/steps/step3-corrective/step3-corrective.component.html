@@ -1,0 +1,40 @@
+<div class="step" [formGroup]="group">
+  <h3>Step 3 – Corrective Action</h3>
+
+  <div class="row">
+    <label>Action Plan *</label>
+    <textarea rows="4" formControlName="actionPlan"></textarea>
+    <div class="err" *ngIf="isInvalid('actionPlan')">
+      Action Plan is required (min 15 characters).
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="row">
+      <label>Responsible Person (Autocomplete) *</label>
+      <input type="text" formControlName="responsiblePerson" list="responsibleList" />
+      <datalist id="responsibleList">
+        <option *ngFor="let x of responsiblePeople" [value]="x"></option>
+      </datalist>
+      <div class="err" *ngIf="isInvalid('responsiblePerson')">Must match predefined list.</div>
+    </div>
+
+    <div class="row">
+      <label>Target Completion Date *</label>
+      <input type="date" formControlName="targetCompletionDate" />
+      <div class="err" *ngIf="isInvalid('targetCompletionDate')">
+        Target date is required and must be in the future.
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>Budget Estimate (Optional)</label>
+    <input type="number" formControlName="budgetEstimate" min="0" step="0.01" />
+    <div class="err" *ngIf="isInvalid('budgetEstimate')">Budget must be a positive number if provided.</div>
+  </div>
+
+  <div class="err" *ngIf="showErrors && formLevelErrors?.['targetNotAfterInvestigation']">
+    Target Completion Date must be after Investigation Date.
+  </div>
+</div>

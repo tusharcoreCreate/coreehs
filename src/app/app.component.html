@@ -1,0 +1,18 @@
+<div class="page">
+  <header class="header">
+    <h1>Frontend Practical – Angular 17</h1>
+
+    <nav class="nav">
+      <a routerLink="/form" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Form Wizard
+      </a>
+      <a routerLink="/d3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        D3 Tree
+      </a>
+    </nav>
+  </header>
+
+  <main class="card">
+    <router-outlet></router-outlet>
+  </main>
+</div>
