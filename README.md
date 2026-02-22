@@ -16,3 +16,5 @@ npm i -g @angular/cli@17
 - Draft save bypasses validation (localStorage).
 - Final submit enforces all validations.
 - D3 tree renders the sample JSON using d3.
+# coreehs
+front-end practical
