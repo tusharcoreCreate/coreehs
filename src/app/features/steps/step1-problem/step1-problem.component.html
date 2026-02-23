@@ -2,7 +2,7 @@
   <h3>Step 1 – Problem Definition</h3>
 
   <div class="row">
-    <label>Problem Title *</label>
+    <label>Problem Title <small class="err">*</small></label>
     <input type="text" formControlName="problemTitle" placeholder="Enter title" />
     <div class="err" *ngIf="isInvalid('problemTitle')">
       Title is required (5–100 characters).
@@ -10,7 +10,7 @@
   </div>
 
   <div class="row">
-    <label>Problem Description *</label>
+    <label>Problem Description <small class="err">*</small></label>
     <textarea rows="4" formControlName="problemDescription" placeholder="Enter description"></textarea>
     <div class="err" *ngIf="isInvalid('problemDescription')">
       Description is required (min 20 characters).
@@ -19,7 +19,7 @@
 
   <div class="two">
     <div class="row">
-      <label>Category *</label>
+      <label>Category <small class="err">*</small></label>
       <select formControlName="category">
         <option value="">-- Select --</option>
         <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="row">
-      <label>Reported Date (YYYY-MM-DD) *</label>
+      <label>Reported Date (YYYY-MM-DD) <small class="err">*</small></label>
       <input type="date" formControlName="reportedDate" />
       <div class="err" *ngIf="isInvalid('reportedDate')">
         Reported Date is required and cannot be in the future.
@@ -37,7 +37,7 @@
   </div>
 
   <div class="row">
-    <label>Location (Autocomplete) *</label>
+    <label>Location (Autocomplete) <small class="err">*</small></label>
     <input type="text" formControlName="location" list="locationList" placeholder="Select from list" />
     <datalist id="locationList">
       <option *ngFor="let l of locations" [value]="l"></option>

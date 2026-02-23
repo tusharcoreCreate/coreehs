@@ -3,13 +3,13 @@
 
   <div class="two">
     <div class="row">
-      <label>Why 1 *</label>
+      <label>Why 1 <small class="err">*</small></label>
       <input type="text" formControlName="why1" />
       <div class="err" *ngIf="isInvalid('why1')">Why 1 is required.</div>
     </div>
 
     <div class="row">
-      <label>Why 2 *</label>
+      <label>Why 2 <small class="err">*</small></label>
       <input type="text" formControlName="why2" />
       <div class="err" *ngIf="isInvalid('why2')">Why 2 is required.</div>
     </div>
@@ -17,20 +17,20 @@
 
   <div class="two">
     <div class="row">
-      <label>Why 3 *</label>
+      <label>Why 3 <small class="err">*</small></label>
       <input type="text" formControlName="why3" />
       <div class="err" *ngIf="isInvalid('why3')">Why 3 is required.</div>
     </div>
 
     <div class="row">
-      <label>Investigation Date *</label>
+      <label>Investigation Date <small class="err">*</small></label>
       <input type="date" formControlName="investigationDate" />
       <div class="err" *ngIf="isInvalid('investigationDate')">Investigation Date is required.</div>
     </div>
   </div>
 
   <div class="row">
-    <label>Investigator (Autocomplete) *</label>
+    <label>Investigator (Autocomplete) <small class="err">*</small></label>
     <input type="text" formControlName="investigator" list="investigatorList" />
     <datalist id="investigatorList">
       <option *ngFor="let x of investigators" [value]="x"></option>

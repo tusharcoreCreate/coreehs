@@ -2,7 +2,7 @@
   <h3>Step 3 – Corrective Action</h3>
 
   <div class="row">
-    <label>Action Plan *</label>
+    <label>Action Plan <small class="err">*</small></label>
     <textarea rows="4" formControlName="actionPlan"></textarea>
     <div class="err" *ngIf="isInvalid('actionPlan')">
       Action Plan is required (min 15 characters).
@@ -11,7 +11,7 @@
 
   <div class="two">
     <div class="row">
-      <label>Responsible Person (Autocomplete) *</label>
+      <label>Responsible Person (Autocomplete) <small class="err">*</small></label>
       <input type="text" formControlName="responsiblePerson" list="responsibleList" />
       <datalist id="responsibleList">
         <option *ngFor="let x of responsiblePeople" [value]="x"></option>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="row">
-      <label>Target Completion Date *</label>
+      <label>Target Completion Date <small class="err">*</small></label>
       <input type="date" formControlName="targetCompletionDate" />
       <div class="err" *ngIf="isInvalid('targetCompletionDate')">
         Target date is required and must be in the future.
