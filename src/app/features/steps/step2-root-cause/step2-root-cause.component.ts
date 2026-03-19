@@ -27,4 +27,8 @@ export class Step2RootCauseComponent {
   get hasDuplicateWhy(): boolean {
     return !!this.group.errors?.["duplicateWhy"] && this.showErrors;
   }
+
+  get havOwnerMhy(): boolean {
+    return !!this.group.errors?.["duplicateWhy"] && this.showErrors;
+  }
 }
