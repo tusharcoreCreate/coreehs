@@ -3,7 +3,11 @@
 
   <div class="row">
     <label>Problem Title <small class="err">*</small></label>
-    <input type="text" formControlName="problemTitle" placeholder="Enter title" />
+    <input
+      type="text"
+      formControlName="problemTitle"
+      placeholder="Enter title"
+    />
     <div class="err" *ngIf="isInvalid('problemTitle')">
       Title is required (5–100 characters).
     </div>
@@ -11,7 +15,11 @@
 
   <div class="row">
     <label>Problem Description <small class="err">*</small></label>
-    <textarea rows="4" formControlName="problemDescription" placeholder="Enter description"></textarea>
+    <textarea
+      rows="4"
+      formControlName="problemDescription"
+      placeholder="Enter description"
+    ></textarea>
     <div class="err" *ngIf="isInvalid('problemDescription')">
       Description is required (min 20 characters).
     </div>
@@ -38,7 +46,12 @@
 
   <div class="row">
     <label>Location (Autocomplete) <small class="err">*</small></label>
-    <input type="text" formControlName="location" list="locationList" placeholder="Select from list" />
+    <input
+      type="text"
+      formControlName="location"
+      list="locationList"
+      placeholder="Select from list"
+    />
     <datalist id="locationList">
       <option *ngFor="let l of locations" [value]="l"></option>
     </datalist>
