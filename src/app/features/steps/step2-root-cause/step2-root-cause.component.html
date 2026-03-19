@@ -25,7 +25,9 @@
     <div class="row">
       <label>Investigation Date <small class="err">*</small></label>
       <input type="date" formControlName="investigationDate" />
-      <div class="err" *ngIf="isInvalid('investigationDate')">Investigation Date is required.</div>
+      <div class="err" *ngIf="isInvalid('investigationDate')">
+        Investigation Date is required.
+      </div>
     </div>
   </div>
 
@@ -35,11 +37,18 @@
     <datalist id="investigatorList">
       <option *ngFor="let x of investigators" [value]="x"></option>
     </datalist>
-    <div class="err" *ngIf="isInvalid('investigator')">Must match predefined list.</div>
+    <div class="err" *ngIf="isInvalid('investigator')">
+      Must match predefined list.
+    </div>
   </div>
 
-  <div class="err" *ngIf="hasDuplicateWhy">Why fields must not contain duplicate values.</div>
-  <div class="err" *ngIf="showErrors && formLevelErrors?.['investigationBeforeReported']">
+  <div class="err" *ngIf="hasDuplicateWhy">
+    Why fields must not contain duplicate values.
+  </div>
+  <div
+    class="err"
+    *ngIf="showErrors && formLevelErrors?.['investigationBeforeReported']"
+  >
     Investigation Date must be on/after Reported Date.
   </div>
 </div>
