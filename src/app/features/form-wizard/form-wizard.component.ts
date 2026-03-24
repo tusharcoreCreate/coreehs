@@ -193,7 +193,9 @@ export class FormWizardComponent {
       const payload = this.form.getRawValue();
       console.log("FINAL SUBMIT PAYLOAD:", payload);
 
-      this.submitMessage.set("Submitted successfully! Check console for payload.");
+      this.submitMessage.set(
+        "Submitted successfully! Check console for payload.",
+      );
 
       localStorage.removeItem(DRAFT_KEY);
       this.form.reset();
